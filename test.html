@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover Effect</title>
+      <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.image-container {
+    overflow: hidden;
+    width: 300px; /* Adjust this size as needed */
+    height: 600px; /* Adjust this size as needed */
+    position: relative;
+    perspective: 1000px;
+}
+
+.hover-image {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-out;
+    will-change: transform;
+}
+
+      </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="" alt="EZTech Mobile Preview" class="hover-image" />
+    </div>
+
+   <script>
+    const imageContainer = document.querySelector('.hov');
+const image = document.querySelector('.hov2');
+
+imageContainer.addEventListener('mousemove', (e) => {
+    const rect = imageContainer.getBoundingClientRect();
+    const x = e.clientX - rect.left; // X coordinate within the container
+    const y = e.clientY - rect.top;  // Y coordinate within the container
+
+    const moveX = (x - rect.width / 2) / 20;
+    const moveY = (y - rect.height / 2) / 20;
+
+    image.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
+
+imageContainer.addEventListener('mouseleave', () => {
+    image.style.transform = `translate(0px, 0px)`; 
+});
+
+   </script>
+</body>
+</html>
